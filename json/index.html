@@ -1,0 +1,13 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="./css/styles.css" type="text/css" media="all">
+</head>
+
+<script type="text/javascript" src="./_compile/Main.elm"></script>
+
+<div id="task-container"></div>
+
+<script>
+    var node = document.getElementById('task-container');
+    var app = Elm.Main.embed(node);
+</script>
