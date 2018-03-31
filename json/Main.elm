@@ -12,9 +12,12 @@ type alias Model =
     , errorMessage : Maybe String
     }
 
-
 type alias Book =
     { id : Int, title : String, author : String }
+
+type Msg
+    = SendHttpRequest
+    | DataReceived (Result Http.Error (List Book))
 
 
 view : Model -> Html Msg
@@ -59,11 +62,6 @@ viewData books =
 viewLine : Book -> Html Msg
 viewLine book =
     li [] [ text (toString book.id ++ " " ++ book.title ++ " " ++ book.author) ]
-
-
-type Msg
-    = SendHttpRequest
-    | DataReceived (Result Http.Error (List Book))
 
 
 dataDecoder : Decoder (List Book)
