@@ -4,17 +4,16 @@ import Html exposing (..)
 import Html.Attributes exposing (checked, name, type_)
 import Html.Events exposing (onClick)
 import Ports exposing (..)
+import Types exposing (Model)
 
 
 type Msg
     = CheckboxChange
-    | StateLoaded Model
 
 
-type alias Model =
-    Bool
+type alias Flags =
+    Model
 
-type alias Flags = Model
 
 init : Flags -> ( Model, Cmd Msg )
 init flags =
@@ -36,9 +35,6 @@ update msg model =
         CheckboxChange ->
             ( not model, Cmd.none )
 
-        StateLoaded state ->
-            ( state, Cmd.none )
-
 
 view : Model -> Html Msg
 view model =
@@ -48,16 +44,11 @@ view model =
         ]
 
 
-subscriptions : Model -> Sub Msg
-subscriptions model =
-    loadState StateLoaded
-
-
 main : Program Flags Model Msg
 main =
     Html.programWithFlags
         { init = init
         , view = view
         , update = updateWithLocalStorage
-        , subscriptions = subscriptions
+        , subscriptions = \_ -> Sub.none
         }

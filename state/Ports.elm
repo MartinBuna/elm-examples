@@ -1,5 +1,5 @@
 port module Ports exposing (..)
 
-port saveState : Bool -> Cmd msg
+import Types exposing (Model)
 
-port loadState : (Bool -> msg) -> Sub msg
+port saveState : Model -> Cmd msg

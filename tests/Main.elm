@@ -25,18 +25,22 @@ main =
 
 testStringReverse : Test
 testStringReverse =
-    describe "test string reverse"
-        [ test "this should succeed" <|
+    describe "Otestování funkce String.reverse."
+        [ test "Toto by mělo projít." <|
             \() ->
-                String.reverse "blah"
-                    |> Expect.equal "halb"
+                String.reverse "abcd"
+                    |> Expect.equal "dcba"
+        , test "Toto by mělo selhat." <|
+            \() ->
+                String.reverse "abcd"
+                    |> Expect.equal "acdb"
         ]
 
 
 testArrayLength : Test
 testArrayLength =
-    describe "test array length"
-        [ test "this should succeed" <|
+    describe "Otestování funkce List.length."
+        [ test "Toto by mělo selhat." <|
             \() ->
                 List.length [ 1, 2 ]
                     |> Expect.equal 1
